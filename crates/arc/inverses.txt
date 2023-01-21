@@ -1,0 +1,127 @@
+
+In the following output, it is shown whether or not certain common conjugates
+result in a scalar when applied to a variety of multivectors. In the case that
+one of the conjugates _does_ result in a scalar, that conjugate may be used to
+form an expression for the inverse of the given multivector.
+
+All multivectors have an inverse given by the general 4th order form of the
+van der Mark Equation (which should be verified in the output below). What is
+of interest is which of the given _second_ order conjugates may provide a
+simpler expression, along with which multivectors have an inverse that is
+always defined.
+
+The shorthand notation used is as follows:
+
+MultiVectors:
+  p = ap
+  t = a0
+  h = a123
+  q = a0123
+  B = { a23  a31  a12 }
+  T = { a023 a031 a012 }
+  A = { a1   a2   a3 }
+  E = { a01  a02  a03 }
+
+Conjugates:
+  sqr = psi psi
+  dgr = psi psi^dagger = phi (Hermitian conjugate)
+  ddg = psi psi^double_dagger (negate all bivectors)
+  dmd = psi psi^diamond (negate everything but ap)
+  vdm = phi phi^diamond (denominator of the van der Mark equation)
+
+
+For each of the conjugate results they are followed by (∅) or ( ) where the
+presence of ∅ denotes that the inverse includes a null hyperplane.
+
+-----------------------------------------------
+B     : sqr( ), dgr( ), ddg( ), dmd( ), vdM( )
+pB    :       , dgr( ), ddg( ), dmd( ), vdM( )
+tB    :       , dgr( ), ddg( ),       , vdM( )
+hB    :       , dgr( ), ddg( ),       , vdM( )
+qB    :       ,       , ddg(∅),       , vdM(∅)  *
+ptB   :       ,       ,       ,       , vdM(∅)
+phB   :       ,       ,       ,       , vdM(∅)
+pqB   :       ,       ,       ,       , vdM(∅)
+thB   :       , dgr( ), ddg( ),       , vdM( )
+tqB   :       ,       , ddg(∅),       , vdM(∅)  *
+hqB   :       ,       , ddg(∅),       , vdM(∅)  *
+pthB  :       ,       ,       ,       , vdM(∅)
+ptqB  :       ,       ,       ,       , vdM(∅)
+phqB  :       ,       ,       ,       , vdM(∅)
+thqB  :       ,       , ddg(∅),       , vdM(∅)  *
+pthqB :       ,       ,       ,       , vdM(∅)
+-----------------------------------------------
+T     : sqr( ), dgr( ), ddg( ), dmd( ), vdM( )
+pT    :       , dgr( ),       , dmd( ), vdM( )
+tT    :       , dgr( ),       ,       , vdM( )
+hT    : sqr(∅),       , ddg(∅), dmd(∅), vdM(∅)  *
+qT    : sqr( ), dgr( ), ddg( ), dmd( ), vdM( )
+ptT   :       ,       ,       ,       , vdM(∅)
+phT   :       ,       ,       , dmd(∅), vdM(∅)  *
+pqT   :       , dgr( ),       , dmd( ), vdM( )
+thT   :       ,       ,       ,       , vdM(∅)
+tqT   :       ,       ,       ,       , vdM(∅)
+hqT   : sqr(∅),       , ddg(∅), dmd(∅), vdM(∅)  *
+pthT  :       ,       ,       ,       , vdM(∅)
+ptqT  :       ,       ,       ,       , vdM(∅)
+phqT  :       ,       ,       , dmd(∅), vdM(∅)  *
+thqT  :       ,       ,       ,       , vdM(∅)
+pthqT :       ,       ,       ,       , vdM(∅)
+-----------------------------------------------
+A     : sqr( ), dgr( ), ddg( ), dmd( ), vdM( )
+pA    :       , dgr( ),       , dmd( ), vdM( )
+tA    : sqr(∅),       , ddg(∅), dmd(∅), vdM(∅)  *
+hA    :       , dgr( ),       ,       , vdM( )
+qA    : sqr( ), dgr( ), ddg( ), dmd( ), vdM( )
+ptA   :       ,       ,       , dmd(∅), vdM(∅)  *
+phA   :       ,       ,       ,       , vdM(∅)
+pqA   :       , dgr( ),       , dmd( ), vdM( )
+thA   :       ,       ,       ,       , vdM(∅)
+tqA   : sqr(∅),       , ddg(∅), dmd(∅), vdM(∅)  *
+hqA   :       ,       ,       ,       , vdM(∅)
+pthA  :       ,       ,       ,       , vdM(∅)
+ptqA  :       ,       ,       , dmd(∅), vdM(∅)  *
+phqA  :       ,       ,       ,       , vdM(∅)
+thqA  :       ,       ,       ,       , vdM(∅)
+pthqA :       ,       ,       ,       , vdM(∅)
+-----------------------------------------------
+E     : sqr( ), dgr( ), ddg( ), dmd( ), vdM( )
+pE    :       ,       , ddg(∅), dmd(∅), vdM(∅)  *
+tE    : sqr( ), dgr( ),       , dmd( ), vdM( )
+hE    : sqr( ), dgr( ),       , dmd( ), vdM( )
+qE    :       , dgr( ), ddg( ),       , vdM( )
+ptE   :       ,       ,       , dmd(∅), vdM(∅)  *
+phE   :       ,       ,       , dmd(∅), vdM(∅)  *
+pqE   :       ,       ,       ,       , vdM(∅)
+thE   : sqr( ), dgr( ),       , dmd( ), vdM( )
+tqE   :       ,       ,       ,       , vdM(∅)
+hqE   :       ,       ,       ,       , vdM(∅)
+pthE  :       ,       ,       , dmd(∅), vdM(∅)  *
+ptqE  :       ,       ,       ,       , vdM(∅)
+phqE  :       ,       ,       ,       , vdM(∅)
+thqE  :       ,       ,       ,       , vdM(∅)
+pthqE :       ,       ,       ,       , vdM(∅)
+-----------------------------------------------
+pthq  :       ,       ,       , dmd(∅), vdM(∅)
+
+
+
+qB   -> double dagger
+tqB  -> double dagger
+hqB  -> double dagger
+thqB -> double dagger
+
+hT   -> square
+phT  -> diamond
+hqT  -> square
+phqT -> diamond
+
+tA   -> square
+ptA  -> diamond
+tqA  -> square
+ptqA -> diamond
+
+pE   -> diamond
+ptE  -> diamond
+phE  -> diamond
+pthE -> diamond

@@ -1,0 +1,55 @@
+COMMENT    = ${ "//" ~ " "? ~ (!"\n" ~ ANY)* | "/*" ~ (!"*/" ~ ANY)* ~ "*/" }
+WHITESPACE = _{ " " | "\t" }
+
+num         = @{ ASCII_NONZERO_DIGIT ~ ASCII_DIGIT* }
+point       =  { "p" }
+index       =  { '0'..'3' }
+grade       =  { '0'..'4' }
+form        = @{ index{1,4} | point }
+signed_form = ${ sub? ~ form }
+
+literal        = _{ magnitude | alpha | term | ident | multivector | differential }
+  ident        = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
+  magnitude    = ${ num ~ ("/" ~ num)? }
+  alpha        = ${ sub? ~ "a" ~ form }
+  term         = ${ sub? ~ "t" ~ form }
+  multivector  = !{ "{" ~ signed_form+  ~ "}" }
+  differential = !{ "<" ~ signed_form+  ~ ">" }
+
+prefix_op = { negate }
+  negate  = { "-" }
+
+postfix_op        =  { hermitian | reverse | star | conjugate_grade | conjugate_form }
+  hermitian       =  { "!" }
+  reverse         =  { "~" }
+  star            =  { "*" }
+  conjugate_grade = ${ "|" ~ grade* }
+  conjugate_form  = ${ "|" ~ alpha }
+
+sum_op = { add | sub }
+  sub  = { "-" }
+  add  = { "+" }
+
+div_op = { div }
+  div  = { "/" }
+
+line           = _{ special_form | expr }
+  special_form = _{ assignment | equality | directive }
+    assignment =  { ident ~ "=" ~ expr }
+    equality   =  { expr ~ "==" ~ expr }
+    directive  = @{ "#" ~ "!"? ~ ident }
+  expr         = _{ product | sum }
+    product    =  { value{2,} }
+      value    = ${ prefix_op? ~ (literal | group) ~ postfix_op? }
+        group  = !{ "(" ~ expr ~ ")" }
+    sum        =  { division ~ (sum_op ~ division)* }
+      division =  { value ~ (div_op ~ value)* }
+
+program = _{
+  SOI
+  ~ ("#!" ~ (!"\n" ~ ANY)*)?
+  ~ "\n"*
+  ~ (line ~ "\n"+)*
+  ~ line?
+  ~ EOI
+}
