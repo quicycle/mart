@@ -1,6 +1,6 @@
 use clap::Parser;
 
-use ar_notes::exec::{repl, Evaluator};
+use arc::exec::{repl, Evaluator};
 
 /// An evaluator for AR calculations. If a filename or expression is not passed on the command
 /// line, arc will start in REPL mode allowing you to interactively enter and evaluate expressions.
