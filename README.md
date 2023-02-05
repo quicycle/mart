@@ -1,3 +1,3 @@
 # MART
 
-Simulation software from Quicycle using MART.
+Simulation and calculation software from Quicycle using MART.
