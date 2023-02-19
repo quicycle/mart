@@ -73,7 +73,10 @@ def per_alpha_expressions(s: str):
 if __name__ == "__main__":
     parser = ArgumentParser(description=__doc__, formatter_class=RawDescriptionHelpFormatter)
     parser.add_argument("-a", "--alpha", type=str)
+    parser.add_argument("-m", "--metric", type=str, default="+---")
     args = parser.parse_args()
+
+    config.metric = args.metric
 
     s = f"Result for ψ = X.G.X^<>,   X = e^k.a{args.alpha} = A.ap + B.a{args.alpha}"
     print(f"{s}\n{'=' * len(s)}\n")
